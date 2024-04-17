@@ -14,7 +14,22 @@ html {
   background: #13151a;
   background-size: 224px;
 }
-/*
+main {
+  margin: auto;
+  padding: 1rem;
+  width: 1200px;
+  max-width: calc(100% - 2rem);
+  font-size: 1.3rem;
+  line-height: 1.6;
+}
+main > h1 {
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1;
+  text-align: center;
+  margin-bottom: 1em;
+  margin-top: 2em;
+}
 code {
   font-family:
     Menlo,
@@ -26,4 +41,3 @@ code {
     Courier New,
     monospace;
 }
-*/

@@ -4,10 +4,11 @@
 
 ## Dependencies
 
-1. Node(21.6.2)
-2. Astro(4.5.6)
-3. TailwindCSS(3.4.3)
-4. DaisyUI(4.10.1)
+1. [Node(21.6.2)](https://nodejs.org/en)
+2. [Astro(4.5.6)](https://astro.build/)
+3. [TailwindCSS(3.4.3)](https://tailwindcss.com/)
+4. [DaisyUI(4.10.1)](https://daisyui.com/)
+5. [pagefind](https://github.com/cloudcannon/pagefind)
 5. Others to see package.json
 
 ## Commands
