@@ -1,0 +1,25 @@
+---
+import BlogsLayout from '../layouts/BlogsLayout.astro';
+
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('post')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const tags = [
+  ...new Set(posts.map((post) => post.data.tags).flat())
+].filter((tag) => tag !== undefined).sort();
+
+const years = [
+  ...new Set(posts.map((post) => post.data.pubDate.getFullYear()))
+].sort();
+
+console.log(">> blog/index tags: ", tags);
+console.log(">> blog/index years: ", years);
+
+const SITE_TITLE = "Blog"
+const SITE_DESCRIPTION = "Blog home"
+---
+
+<BlogsLayout title={SITE_TITLE} description={SITE_DESCRIPTION} posts={posts} tags={tags} years={years} />

@@ -1,0 +1,18 @@
+---
+interface Props {
+  tags: string[];
+  filterTag: string;
+  alignCenter: boolean;
+}
+const { tags, filterTag, alignCenter=false } = Astro.props;
+const alignClass = alignCenter ? "justify-center" : undefined;
+---
+<div class=`flex gap-x-2 ${alignClass}`>
+  {
+  tags && tags.map((tag) => {
+      return tag == filterTag ?
+        <div class="badge badge-primary badge-lg">{tag}</div> :
+        <a href={`/tags/${tag}`} class="badge badge-neutral badge-lg">{tag}</a>
+    })
+  }
+</div>

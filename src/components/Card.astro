@@ -1,0 +1,26 @@
+---
+interface Props {
+  logo: string;
+	title: string;
+  label: string;
+  href: string;
+  bgcolor: string;
+}
+const { logo, title, label, href, bgcolor="dark" } = Astro.props;
+---
+<a class="card w-120 bg-base-100 shadow-xl" href={href}>
+  <div class="card-body items-center">
+    <div class="items-center">
+      <h2 class="card-title text-primary text-[1.5rem]">
+        {title}
+      </h2>
+    </div>
+    <div class="card-actions place-self-end">
+      {label && <div class="badge badge-secondary">{label}</div>}
+    </div>
+    <div class="divider"></div>
+
+    <slot />
+
+  </div>
+</a>

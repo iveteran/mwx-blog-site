@@ -1,0 +1,29 @@
+{
+  "name": "mwx-blog-site",
+  "type": "module",
+  "version": "1.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^2.3.0",
+    "@astrojs/rss": "^4.0.5",
+    "@astrojs/sitemap": "^3.1.2",
+    "@astrojs/tailwind": "^5.1.0",
+    "@philnash/astro-pagination": "^0.4.0",
+    "@popperjs/core": "^2.11.8",
+    "@tailwindcss/typography": "^0.5.12",
+    "@types/bootstrap": "^5.2.10",
+    "astro": "^4.5.16",
+    "astro-bootstrap": "^0.6.2",
+    "bootstrap": "^5.3.3",
+    "tailwindcss": "^3.4.3"
+  },
+  "devDependencies": {
+    "daisyui": "^4.10.1"
+  }
+}

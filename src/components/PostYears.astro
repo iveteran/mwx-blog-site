@@ -1,0 +1,21 @@
+---
+interface Props {
+  years: number[];
+  filterYear: number;
+  alignCenter: boolean;
+}
+const { years, filterYear, alignCenter=false } = Astro.props;
+const alignClass = alignCenter ? "justify-center" : undefined;
+console.log(">> PostYears years: ", years);
+console.log(">> PostYears filterYear: ", filterYear);
+---
+
+<div class=`flex gap-x-2 ${alignClass}`>
+  {
+  years && years.map((year) => {
+      return year == filterYear ?
+        <div class="badge badge-primary badge-lg">{year}</div> :
+        <a href={`/${year}`} class="badge badge-neutral badge-lg">{year}</a>
+    })
+  }
+</div>

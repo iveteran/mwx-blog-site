@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+	title: string;
+  description: string;
+  category: string;
+  navbarFixed: boolean;
+}
+const { title, description, category, navbarFixed=true } = Astro.props;
+
+const site_icon = "/favicon.ico";
+const site_title = "Matrixworks";
+const page_title = `${site_title} | ${title}`;
+---
+<Layout title={page_title} description={description}>
+  <Navbar 
+    logo={site_icon}
+    title={site_title}
+    category={category}
+    fixed={navbarFixed}
+  />
+
+  <main class="mb-auto">
+    <slot name="title">
+      <!-- default title -->
+      <h1>{title}</h1>
+    </slot>
+
+    <slot />
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+	main {
+		margin: auto;
+		padding: 1rem;
+		width: 1200px;
+		max-width: calc(100% - 2rem);
+		color: gray;
+		font-size: 1.3rem;
+		line-height: 1.6;
+	}
+	h1 {
+		font-size: 2rem;
+		font-weight: 500;
+		line-height: 1;
+		text-align: center;
+		margin-bottom: 1em;
+    margin-top: 2em;
+	}
+</style>

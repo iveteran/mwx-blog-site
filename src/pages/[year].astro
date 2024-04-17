@@ -1,0 +1,46 @@
+---
+import BlogsLayout from "../layouts/BlogsLayout.astro";
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = (await getCollection('post')).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  );
+
+  const tags = [
+    ...new Set(posts.map((post) => post.data.tags).flat())
+  ].filter((tag) => tag !== undefined).sort();
+
+  const years = [
+    ...new Set(posts.map((post) => post.data.pubDate.getFullYear()))
+  ].sort();
+  console.log(">> blog/[year] years: ", years)
+
+  return years.map((year) => {
+    const filteredPosts = posts.filter((post) =>
+      year && post.data.pubDate && post.data.pubDate.getFullYear() == year
+    );
+    return {
+      params: { year },
+      props: { posts: filteredPosts, years: years, tags: tags },
+    };
+  });
+}
+
+const { year } = Astro.params;
+const { posts, years, tags } = Astro.props;
+
+console.log(">> blog/[%s] years: %s", year, years)
+
+const SITE_TITLE = `Blog tagged with ${year}`
+const SITE_DESCRIPTION = SITE_TITLE
+---
+
+<BlogsLayout
+  title={SITE_TITLE}
+  description={SITE_DESCRIPTION}
+  posts={posts}
+  tags={tags}
+  years={years}
+  filterYear={Number(year)}
+/>

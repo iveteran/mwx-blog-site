@@ -1,0 +1,31 @@
+---
+import FormattedDate from '../components/FormattedDate.astro';
+import PostTags from './PostTags.astro';
+import '../styles/blog.css';
+
+interface Props {
+	title: string;
+  description: string;
+  href: string;
+  cover: string;
+  pubDate: Date;
+  tags: string[];
+  filterTag: string;
+}
+const { title, description, href, cover, pubDate, tags, filterTag } = Astro.props;
+const width = 720;
+const height = 360;
+//console.log(">>>> pubDate: ", pubDate)
+---
+
+<section class="grid gap-y-4 my-8">
+  <a href={href} class="hover:text-primary">
+    { cover && <img width={width} height={height} src={cover} alt={title} class="hover:shadow-xl" /> }
+    <h4 class="my-2">{title}</h4>
+  </a>
+  <p class="m-0">
+    <FormattedDate date={pubDate} />
+  </p>
+  <span>{description}</span>
+  <PostTags tags={tags} filterTag={filterTag} />
+</section>
